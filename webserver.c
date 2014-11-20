@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <assert.h>
 #include "libuv/include/uv.h"
 #include "http-parser/http_parser.h"
@@ -125,7 +126,7 @@ int main() {
   parser_settings.on_headers_complete = on_headers_complete;
   
   resbuf.base = RESPONSE;
-  resbuf.len = sizeof(RESPONSE);
+  resbuf.len = strlen(RESPONSE);
 
   uv_loop = uv_default_loop();
 
