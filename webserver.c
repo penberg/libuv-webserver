@@ -12,9 +12,18 @@
     exit(1); \
   }
 #define UVERR(err, msg) fprintf(stderr, "%s: %s\n", msg, uv_strerror(err))
+
+//#define LOGGING 1
+
+#ifdef LOGGING
 #define LOG(msg) puts(msg);
 #define LOGF(fmt, params...) printf(fmt "\n", params);
 #define LOG_ERROR(msg) puts(msg);
+#else
+#define LOG(msg) do { } while (0);
+#define LOGF(fmt, params...) do { } while (0);
+#define LOG_ERROR(msg) do { } while (0);
+#endif
 
 #define RESPONSE \
   "HTTP/1.1 200 OK\r\n" \
